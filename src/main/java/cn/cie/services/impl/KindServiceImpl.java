@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Array;
 import java.util.*;
 
-/**
- * Created by lh2 on 2023/6/6.
- */
+
 @Service
 public class KindServiceImpl implements KindService {
 

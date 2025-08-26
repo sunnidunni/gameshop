@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 
-/**
- * Created by lh2 on 2023/6/15.
- */
+
 @CrossOrigin
 @Controller
 @RequestMapping(value = "admin")

@@ -3,7 +3,6 @@ package cn.cie.utils;
 import org.springframework.util.DigestUtils;
 
 /**
- * Created by lh2 on 2023/6/6.
  * 将密码进行MD5加密
  */
 public class PasswordUtil {

@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * Created by lh2 on 2023/6/25.
  * 事件消费者，不断从事件队列中获取事件，根据事件类型处理不同的事件
  */
 @Service

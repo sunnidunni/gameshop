@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
 
-/**
- * Created by lh2 on 2023/6/8.
- */
+
 @Service
 public class GameServiceImpl implements GameService {
 

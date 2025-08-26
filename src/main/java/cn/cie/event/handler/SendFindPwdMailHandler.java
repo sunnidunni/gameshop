@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by lh2 on 2023/6/25.
  * 发送找回密码邮件事件
  */
 @Service

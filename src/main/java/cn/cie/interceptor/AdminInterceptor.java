@@ -8,10 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by lh2 on 2023/6/21.
- * 管理员权限拦截，如果用户不是管理员，那么跳转到管理员的登陆页面
- */
+
 public class AdminInterceptor implements HandlerInterceptor {
 
     @Autowired

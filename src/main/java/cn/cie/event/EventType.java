@@ -1,7 +1,6 @@
 package cn.cie.event;
 
 /**
- * Created by lh2 on 2023/6/25.
  * 异步事件类型
  */
 public enum EventType {

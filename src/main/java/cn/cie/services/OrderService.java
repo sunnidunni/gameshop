@@ -4,9 +4,7 @@ import cn.cie.utils.Result;
 
 import java.util.List;
 
-/**
- * Created by lh2 on 2023/6/8.
- */
+
 public interface OrderService {
 
     /**

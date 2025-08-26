@@ -1,9 +1,6 @@
 package cn.cie.utils;
 
-/**
- * Created by lh2 on 2023/6/6.
- * 消息字典
- */
+
 public class MsgCenter {
 
     public static final String OK = "OK";

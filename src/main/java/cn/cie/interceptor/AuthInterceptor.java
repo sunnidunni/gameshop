@@ -17,11 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
-/**
- * Created by lh2 on 2023/6/11.
- * 拦截器，根据token获取用户身份
- * 先从缓存中查找，如果找不到再从数据库中找
- */
+
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 

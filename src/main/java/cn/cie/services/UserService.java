@@ -3,9 +3,7 @@ package cn.cie.services;
 import cn.cie.entity.User;
 import cn.cie.utils.Result;
 
-/**
- * Created by lh2 on 2023/5/31.
- */
+
 public interface UserService {
 
     /**

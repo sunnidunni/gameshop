@@ -7,9 +7,6 @@ import cn.cie.entity.Tag;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by lh2 on 2023/6/6.
- */
 public class GameDTO {
 
     private Integer id;

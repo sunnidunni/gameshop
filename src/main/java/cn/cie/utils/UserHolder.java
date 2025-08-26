@@ -3,10 +3,7 @@ package cn.cie.utils;
 import cn.cie.entity.User;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by lh2 on 2023/6/11.
- * 每次请求时存放请求者的信息
- */
+
 @Component
 public class UserHolder {
 

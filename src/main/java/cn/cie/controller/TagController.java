@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by lh2 on 2023/6/7.
- */
+
 @CrossOrigin
 @Controller
 @RequestMapping(value = "tag")

@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by lh2 on 2023/6/6.
- */
+
 @CrossOrigin
 @Controller
+
 @RequestMapping(value = "kind")
 public class KindController extends AbstractController {
 

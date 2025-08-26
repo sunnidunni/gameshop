@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
-/**
- * Created by lh2 on 2023/6/12.
- */
+
 @CrossOrigin
 @Controller
 @RequestMapping(value = "/order")

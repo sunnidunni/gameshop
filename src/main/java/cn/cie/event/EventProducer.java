@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by lh2 on 2023/6/25.
  * 事件生产者
  */
 @Component

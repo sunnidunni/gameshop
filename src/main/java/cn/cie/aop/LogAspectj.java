@@ -14,7 +14,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by lh2 on 2023/6/8.
  * 日志记录，包括请求日志和错误日志
  */
 @Component

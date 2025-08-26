@@ -7,7 +7,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by lh2 on 2023/6/9.
  * 定时任务
  * http://blog.csdn.net/sd4000784/article/details/7745947
  */

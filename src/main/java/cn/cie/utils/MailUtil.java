@@ -3,10 +3,7 @@ package cn.cie.utils;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
-/**
- * Created by lh2 on 2023/6/2.
- * 邮件工具
- */
+
 public class MailUtil {
 
     private final static String USERNAME = "13522599381@163.com";

@@ -196,18 +196,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Development Team** - *Initial work* - [Your Name/Team]
-
-## 🙏 Acknowledgments
-
-- Spring Framework community
-- Bootstrap team for the responsive design framework
-- MyBatis team for the ORM framework
-
-## 📞 Support
-
-For support and questions, please open an issue in the GitHub repository or contact the development team.
-
----
-
-**Note**: This is a demonstration project showcasing full-stack web development skills with Java Spring Framework. It includes all necessary components for a production-ready e-commerce platform. 
+- **Development Team** - *Initial work* - [Derek Sun]

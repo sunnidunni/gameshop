@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by lh2 on 2023/6/25.
  * 事件实体
  */
 public class EventModel {

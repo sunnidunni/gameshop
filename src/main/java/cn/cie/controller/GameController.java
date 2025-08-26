@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Created by lh2 on 2023/6/8.
- */
+
 @CrossOrigin
 @Controller
 @RequestMapping(value = "game")

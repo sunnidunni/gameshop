@@ -6,9 +6,6 @@ import cn.cie.entity.Orderitem;
 
 import java.util.Date;
 
-/**
- * Created by lh2 on 2023/6/12.
- */
 public class OrderItemDTO {
 
     private Integer id;

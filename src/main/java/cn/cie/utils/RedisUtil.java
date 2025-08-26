@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lh2 on 2023/6/13.
  * 封装了redis操作，用protostuff进行序列化和反序列化
  * 如果要插入对象，需要传入插入对象的Class类型
  */

@@ -8,10 +8,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by lh2 on 2023/6/15.
- * 管理员相关
- */
+
 public interface AdminService {
 
     /**

@@ -16,9 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * Created by lh2 on 2023/6/15.
- */
+
 @Service
 public class AdminServiceImpl implements AdminService {
 

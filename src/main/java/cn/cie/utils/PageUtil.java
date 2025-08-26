@@ -1,7 +1,6 @@
 package cn.cie.utils;
 
 /**
- * Created by lh2 on 2023/6/21.
  * 分页工具
  */
 public class PageUtil {
