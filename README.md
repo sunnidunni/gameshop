@@ -1,6 +1,6 @@
 Just wanted to open source my last project on here
 
-# We Play - Online Game Distribution Platform (Created by Gemini)
+# We Play - Online Game Distribution Platform (Readme assisted by Gemini)
 
 A full-stack e-commerce platform for digital game distribution, built with Java Spring Framework and modern web technologies. This project demonstrates a complete online game store similar to Steam, featuring user management, game cataloging, shopping cart functionality, and secure payment processing.
 
