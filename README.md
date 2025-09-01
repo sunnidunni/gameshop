@@ -198,4 +198,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Development Team** - *Initial work* - [Derek Sun]
+- Derek Sun and some of my friends
