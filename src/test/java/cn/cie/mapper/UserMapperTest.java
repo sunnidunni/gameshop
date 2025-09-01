@@ -10,9 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-/**
- * Created by lh2 on 2023/6/21.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = {"classpath:spring-dao.xml"})
 public class UserMapperTest {

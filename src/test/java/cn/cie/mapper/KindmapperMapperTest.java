@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by lh2
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = {"classpath:spring-dao.xml", "classpath:spring-service.xml"})
 public class KindmapperMapperTest {
