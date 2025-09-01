@@ -9,45 +9,45 @@ import java.util.List;
 public interface GameService {
 
     /**
-     * 根据游戏id获取游戏详细信息
+     * Get game details by game id
      * @param id
      * @return
      */
     Result<GameDTO> getById(Integer id);
 
     /**
-     * 获取随机图片，用于每日推荐
+     * Get random images for daily recommendations
      * @return
      */
     Result<List<GameDTO>> getRandomGames();
 
     /**
-     * 从缓存中获取最新的5个游戏，如果没有就从数据库中获取
+     * Get latest 5 games from cache, if not available get from database
      * @return
      */
     Result<List<GameDTO>> newestGames();
 
     /**
-     * 从缓存中获取最新的5个准备上架的游戏，如果没有就从数据库中获取
+     * Get latest 5 games ready for release from cache, if not available get from database
      * @return
      */
     Result<List<GameDTO>> preUpGames();
 
     /**
-     * 搜索，从种类、标签、游戏信息中搜索
+     * Search from categories, tags, and game information
      * @param info
      * @return
      */
     Result<List<GameDTO>> search(String info);
 
     /**
-     * 获取免费游戏
+     * Get free games
      * @return
      */
     Result getFreeGames();
 
     /**
-     * 判断游戏是否存在
+     * Check if game exists
      * @param id
      * @return
      */

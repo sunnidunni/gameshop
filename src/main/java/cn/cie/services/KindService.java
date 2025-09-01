@@ -10,14 +10,14 @@ import java.util.List;
 public interface KindService {
 
     /**
-     * 根据种类id获取种类名字，如果不存在返回null
+     * Get category name by category id, return null if not exists
      * @param id
      * @return
      */
     String getNameById(Integer id);
 
     /**
-     * 获取所有的种类
+     * Get all categories
      * @return
      */
     Result<Kind> getAll();

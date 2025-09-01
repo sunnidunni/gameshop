@@ -3,16 +3,16 @@ package cn.cie.entity;
 import java.util.Date;
 
 /**
- * token，用来标识一个用户
+ * Token used to identify a user
  */
 public class Token {
 
     /**
-     * 正常状态
+     * Normal status
      */
     public static final Byte STAT_OK = 0;
     /**
-     * token已过期
+     * Token expired
      */
     public static final Byte STAT_EXPIRED = 1;
 

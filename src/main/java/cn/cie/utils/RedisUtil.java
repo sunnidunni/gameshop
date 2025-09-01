@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 封装了redis操作，用protostuff进行序列化和反序列化
- * 如果要插入对象，需要传入插入对象的Class类型
+ * Redis operations wrapper using protostuff for serialization and deserialization
+ * For object insertion, requires the Class type of the object to be passed
  */
 @Component
 public class RedisUtil<T> implements InitializingBean {
@@ -29,7 +29,7 @@ public class RedisUtil<T> implements InitializingBean {
     public static final String PRE_UP_GAMES = "preupgames";
 
     /**
-     * 存放一条数据
+     * Store a single data entry
      *
      * @param key
      * @param value
@@ -48,7 +48,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 存放一条定时过期的数据
+     * Store a data entry with expiration time
      *
      * @param key
      * @param value
@@ -68,7 +68,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 根据key获取value
+     * Get value by key
      *
      * @param key
      * @return
@@ -86,7 +86,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 存放一个对象
+     * Store an object
      *
      * @param key
      * @param value
@@ -105,7 +105,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 存放一个定时过期的对象
+     * Store an object with expiration time
      *
      * @param key
      * @param value
@@ -125,7 +125,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 根据key获取对应的对象
+     * Get object by key
      *
      * @param key
      * @return
@@ -143,7 +143,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 根据key删除数据
+     * Delete data by key
      *
      * @param key
      * @return
@@ -161,10 +161,10 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 从队列头部出队一个元素，如果没有，则会阻塞 timeout 秒后返回null
-     * 如果 timeout 为0，那么会一直阻塞直到有元素
+     * Dequeue an element from the queue head, blocks for timeout seconds if empty and returns null
+     * If timeout is 0, blocks indefinitely until element is available
      *
-     * @param timeout 阻塞的时间，单位为秒
+     * @param timeout blocking time in seconds
      * @param key
      * @param clazz
      * @return
@@ -183,7 +183,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 从队列左边出队一个元素
+     * Dequeue an element from the left side of queue
      *
      * @param key
      * @param clazz
@@ -202,7 +202,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 向列表尾部添加数据
+     * Add data to the end of the list
      *
      * @param key
      * @param values
@@ -230,10 +230,10 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 向列表尾部添加某个时间点删除的数据
+     * Add data to the end of list that expires at specific time
      *
      * @param key
-     * @param time   unix时间戳
+     * @param time   unix timestamp
      * @param values
      * @return
      */
@@ -251,7 +251,7 @@ public class RedisUtil<T> implements InitializingBean {
                 ++index;
             }
             long res = jedis.rpush(key, jsonStrs);
-            jedis.expireAt(key.getBytes(), time);      // 手动设置过期时间
+            jedis.expireAt(key.getBytes(), time);      // manually set expiration time
             return res;
         } finally {
             if (jedis != null) {
@@ -261,7 +261,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 在列表尾部添加一个定期删除的数据
+     * Add data to the end of list with periodic deletion
      *
      * @param key
      * @param clazz
@@ -293,7 +293,7 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * 获取列表中所有数据,ruguo
+     * Get all data in the list
      *
      * @param key
      * @return
@@ -302,7 +302,7 @@ public class RedisUtil<T> implements InitializingBean {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
-            // 0表示第一个元素，-1表示最后一个元素
+            // 0 represents first element, -1 represents last element
             List<String> list = jedis.lrange(key, 0, -1);
             List<T> res = new ArrayList<T>();
             if (list == null || list.size() == 0) {
@@ -320,14 +320,14 @@ public class RedisUtil<T> implements InitializingBean {
     }
 
     /**
-     * spring注入之后会自动调用这个方法
+     * This method is automatically called after Spring injection
      *
      * @throws Exception
      */
     public void afterPropertiesSet() throws Exception {
-        System.out.println("创建Redis连接");
+        System.out.println("Creating Redis connection");
         jedisPool = new JedisPool(REDIS_URL);
         System.out.println("jedisPool:"+jedisPool.toString());
-        System.out.println("创建Redis连接成功");
+        System.out.println("Redis connection created successfully");
     }
 }

@@ -1,7 +1,7 @@
 package cn.cie.entity;
 
 /**
- * 订单-订单详情映射
+ * Order to order details mapping
  */
 public class Ordermapper {
     private Integer order;

@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/">商城</a>
+                        <a href="/">Store</a>
                     </li>
                     <li class="navbar-form">
                         <div class="form-group">
@@ -23,13 +23,13 @@
                 <ul class="nav navbar-nav navbar-right">
                     <c:choose>
                         <c:when test="${user == null}">
-                            <li><a href="/login" methods="get">登录</a></li>
-                            <li><a href="/register" methods="get">注册</a></li>
+                            <li><a href="/login" methods="get">Login</a></li>
+                            <li><a href="/register" methods="get">Register</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="/user/personal">${user}，您好</a></li>
-                            <li><a href="/shoppingcart">购物车</a></li>
-                            <li><a onclick="outlogin()">退出</a></li>
+                            <li><a href="/user/personal">Hello, ${user}</a></li>
+                            <li><a href="/shoppingcart">Cart</a></li>
+                            <li><a onclick="outlogin()">Logout</a></li>
                         </c:otherwise>
                     </c:choose>
                 </ul>

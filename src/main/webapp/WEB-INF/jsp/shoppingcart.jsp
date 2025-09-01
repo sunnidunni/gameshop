@@ -4,7 +4,7 @@
     <%@ include file="common/head.jsp" %>
     <link href="/css/shoppingcart.css" rel="stylesheet">
     <script src="/js/shoppingcart.js"></script>
-    <title>购物车</title>
+    <title>Shopping Cart</title>
 </head>
 <body>
 <%@ include file="common/top.jsp" %>
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-xs-1 col-sm-1 col-md-1"></div>
         <div class="col-xs-10 col-sm-10 col-md-10">
-            <h1 style="color:#FFF;font-family: 'Adobe 黑体 Std R'"><span class="glyphicon glyphicon-shopping-cart"></span>您的购物车
+            <h1 style="color:#FFF;font-family: 'Adobe 黑体 Std R'"><span class="glyphicon glyphicon-shopping-cart"></span>Your Shopping Cart
             </h1>
             <br>
             <div id="grad1"></div>
@@ -21,17 +21,17 @@
                 <thead>
                 <tr>
                     <th width="20%">
-                        序号
+                        No.
                     </th>
                     <th width="30%">
-                        游戏名
+                        Game Name
                     </th>
                     <th width="25%">
-                        单价
+                        Unit Price
                     </th>
 
                     <th width="15%">
-                        操作
+                        Action
                     </th>
                 </tr>
                 </thead>
@@ -40,19 +40,19 @@
                 </tbody>
             </table>
 
-            <h2 style="color:#CFF" align="right">总价格：￥<span id="prices"></span></h2>
+            <h2 style="color:#CFF" align="right">Total Price: ￥<span id="prices"></span></h2>
 
             <div align="right" style=" border-top-width:10px;padding:20px">
                 <button type="button" class="btn btn-default btn-lg active" style="background-color:#090"
-                        onclick="orderadd()">确定购买
+                        onclick="orderadd()">Confirm Purchase
                 </button>
             </div>
             <br>
             <br>
-            <h3 style="color:#fff" align="left">交付</h3>
+            <h3 style="color:#fff" align="left">Delivery</h3>
             <div style="background-color:#000;padding:10px 40px 10px 100px;">
                 <h4 style="color:#FFF"><a href="#"><img src="/img/static/logo.jpg" width="61" height="50"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    所有电子商品将会经有WEPLAY桌面应用程序递送给您</h4>
+                    All digital products will be delivered to you through the WEPLAY desktop application</h4>
             </div>
             <br/>
             <br/>

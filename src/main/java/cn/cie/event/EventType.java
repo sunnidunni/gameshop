@@ -1,7 +1,7 @@
 package cn.cie.event;
 
 /**
- * 异步事件类型
+ * Async event type
  */
 public enum EventType {
 

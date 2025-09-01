@@ -22,7 +22,7 @@
         </div>
         <div class="col-xs-10 col-sm-10 col-md-10">
             <div class="row">
-                <div class="tit tit_0"> 精 选 和 推 荐</div>
+                <div class="tit tit_0"> Featured and Recommended</div>
             </div>
             <div class="row">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="tit tit_1"> 免 费 游 戏</div>
+                <div class="tit tit_1"> Free Games</div>
             </div>
             <div class="row">
                 <div id="carousel_1" class="carousel slide" data-ride="carousel">
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="tit tit_1"> 休 闲 一 下</div>
+                <div class="tit tit_1"> Casual Gaming</div>
             </div>
 
             <div class="all_bg">
@@ -118,8 +118,8 @@
             <div class="row zx">
                 <div class="col-md-8">
                     <ul id="myTab" class="nav nav-tabs">
-                        <li role="presentation"><a href="#home" data-toggle="tab">新品与热门商品</a></li>
-                        <li role="presentation"><a href="#jijiang" data-toggle="tab">即将推出</a></li>
+                        <li role="presentation"><a href="#home" data-toggle="tab">New & Popular</a></li>
+                        <li role="presentation"><a href="#jijiang" data-toggle="tab">Coming Soon</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content" ;>
 

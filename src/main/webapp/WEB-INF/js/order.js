@@ -12,7 +12,7 @@ function getpaid(pagenum) {
                 var mytable = document.createElement("table");
                 mytable.id = "myTable";
                 mytable.className = "table";
-                mytable.innerHTML = "<thead id='myThead' style='color: #67c1f5'><th width='25%'>序 号</th><th width='35%'>总 价</th><th width='30%'>下单时间</th></thead><tbody id='myTbody' style='color:#630'></tbody>";
+                mytable.innerHTML = "<thead id='myThead' style='color: #67c1f5'><th width='25%'>Order No.</th><th width='35%'>Total Price</th><th width='30%'>Order Time</th></thead><tbody id='myTbody' style='color:#630'></tbody>";
                 var order1 = document.getElementById("already");
                 order1.innerHTML = "";
                 order1.appendChild(mytable);
@@ -89,7 +89,7 @@ function getnotpay(pagenum) {
                 var mytable = document.createElement("table");
                 mytable.id = "myTable1";
                 mytable.className = "table";
-                mytable.innerHTML = "<thead id='myThead1' style='color: #67c1f5'><th width='25%'>序 号</th><th width='35%'>总 价</th><th width='30%'>下单时间</th></thead><tbody id='myTbody1' style='color:#630'></tbody>";
+                mytable.innerHTML = "<thead id='myThead1' style='color: #67c1f5'><th width='25%'>Order No.</th><th width='35%'>Total Price</th><th width='30%'>Order Time</th></thead><tbody id='myTbody1' style='color:#630'></tbody>";
                 var order1 = document.getElementById("yet");
                 order1.innerHTML = "";
                 order1.appendChild(mytable);
@@ -104,8 +104,8 @@ function getnotpay(pagenum) {
                     row.innerHTML = "<td>" +
                         "<div class='dropdown'> <button type='button' class='btn dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown'>" + k +
                         "<span class='caret'></span> </button><ul id = 'ulb_" + i + "'class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu1'>" +
-                        "</td><td>" + prices + "</td><td>" + time + "</td><th><button class='btn smargin' onclick='topay(" + oid + ")'>去支付</button></th>" +
-                        "<th><button class='btn smargin' onclick='cancel(" + oid + ")'>取消</button></th>";
+                        "</td><td>" + prices + "</td><td>" + time + "</td><th><button class='btn smargin' onclick='topay(" + oid + ")'> Pay Now</button></th>" +
+                        "<th><button class='btn smargin' onclick='cancel(" + oid + ")'> Cancel</button></th>";
                     orderclass.appendChild(row);
                     i++;
                 }
@@ -169,7 +169,7 @@ function getcancel(pagenum) {
                 var mytable = document.createElement("table");
                 mytable.id = "myTable2";
                 mytable.className = "table";
-                mytable.innerHTML = "<thead id='myThead2' style='color: #67c1f5'><th width='25%'>序 号</th><th width='35%'>总 价</th><th width='30%'>下单时间</th></thead><tbody id='myTbody2' style='color:#630'></tbody>";
+                mytable.innerHTML = "<thead id='myThead2' style='color: #67c1f5'><th width='25%'>Order No.</th><th width='35%'>Total Price</th><th width='30%'>Order Time</th></thead><tbody id='myTbody2' style='color:#630'></tbody>";
                 var order1 = document.getElementById("cancel");
                 order1.innerHTML = "";
                 order1.appendChild(mytable);

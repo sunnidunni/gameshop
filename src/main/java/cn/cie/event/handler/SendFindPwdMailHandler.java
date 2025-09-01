@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 发送找回密码邮件事件
+ * Event for sending password recovery email
  */
 @Service
 public class SendFindPwdMailHandler implements EventHandler {

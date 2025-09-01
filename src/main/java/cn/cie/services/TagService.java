@@ -10,27 +10,27 @@ import java.util.List;
 public interface TagService {
 
     /**
-     * 根据标签id获取标签名字，如果不存在返回null
+     * Get tag name by tag id, return null if not exists
      * @param id
      * @return
      */
     String getNameById(Integer id);
 
     /**
-     * 获取所有的标签
+     * Get all tags
      * @return
      */
     Result<List<Tag>> getAll();
 
     /**
-     * 添加标签，不绑定到游戏
+     * Add tag without binding to game
      * @param name
      * @return
      */
     Result<Tag> addTag(String name);
 
     /**
-     * 添加标签并绑定到游戏
+     * Add tag and bind to game
      * @param name
      * @param game
      * @return
@@ -38,7 +38,7 @@ public interface TagService {
     Result addTag(String name, Integer game);
 
     /**
-     * 绑定标签到游戏
+     * Bind tag to game
      * @param tag
      * @param game
      * @return
@@ -46,7 +46,7 @@ public interface TagService {
     Result addTag(Integer tag, Integer game);
 
     /**
-     * 根据标签获取所有游戏
+     * Get all games by tag
      * @param tag
      * @param page
      * @return

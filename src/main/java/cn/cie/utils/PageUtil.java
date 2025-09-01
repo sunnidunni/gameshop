@@ -1,15 +1,15 @@
 package cn.cie.utils;
 
 /**
- * 分页工具
+ * Pagination utility
  */
 public class PageUtil {
 
-    private int num;        // 记录的总数
-    private int pages;      // 页数总数
-    private int current;    // 当前页数
-    private int size;       // 每页显示记录数
-    private int startPos;  // 从数据库中查询时开始的条数
+    private int num;        // total number of records
+    private int pages;      // total number of pages
+    private int current;    // current page number
+    private int size;       // records per page
+    private int startPos;  // starting position for database query
 
     public PageUtil(int num, int current, int size) {
         this.num = num;
@@ -24,7 +24,7 @@ public class PageUtil {
     }
 
     /**
-     * 默认每页大小为10
+     * Default page size is 10
      * @param num
      * @param current
      */

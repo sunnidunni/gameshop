@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     public Result register(User user) {
-        // 验证参数是否合法
+        // validate if parameters are legal
         if (StringUtils.isBlank(user.getUsername())) {
             return Result.fail(MsgCenter.EMPTY_USERNAME);
         } else if (StringUtils.isBlank(user.getNickname())) {
@@ -51,22 +51,22 @@ public class UserServiceImpl implements UserService {
         } else if (StringUtils.isBlank(user.getEmail())) {
             return Result.fail(MsgCenter.EMPTY_EMAIL);
         } else if (Pattern.compile("^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$").
-                matcher(user.getEmail()).find() == false) {   // 判断邮箱格式是否正确
+                matcher(user.getEmail()).find() == false) {   // check if email format is correct
             return Result.fail(MsgCenter.ERROR_EMAIL);
         } else if (user.getPhone() == null) {
             return Result.fail(MsgCenter.EMPTY_PHONE);
-        } else if (Pattern.compile("1[3|5|7|8|]\\d{9}").matcher(user.getPhone().toString()).find() == false) {  // 验证手机号码是否格式正确
+        } else if (Pattern.compile("1[3|5|7|8|]\\d{9}").matcher(user.getPhone().toString()).find() == false) {  // validate if phone number format is correct
             return Result.fail(MsgCenter.ERROR_PHONE);
-        } else if (userMapper.selectByName(user.getUsername()) != null) {                  // 用户名已经被注册
+        } else if (userMapper.selectByName(user.getUsername()) != null) {                  // username already registered
             return Result.fail(MsgCenter.USER_USERNAME_EXISTS);
-        } else if (userMapper.selectByEmail(user.getEmail()) != null) {             // 邮箱已被注册
+        } else if (userMapper.selectByEmail(user.getEmail()) != null) {             // email already registered
             return Result.fail(MsgCenter.EMAIL_REGISTERED);
         }
 
-        user.setPassword(PasswordUtil.pwd2Md5(user.getPassword().replaceAll(" ", "")));                // 加密密码
-        if (1 == userMapper.insert(user)) {                                      // 注册成功
+        user.setPassword(PasswordUtil.pwd2Md5(user.getPassword().replaceAll(" ", "")));                // encrypt password
+        if (1 == userMapper.insert(user)) {                                      // registration successful
             String uuid = UUID.randomUUID().toString();
-            redisUtil.putEx("validatecode_" + user.getId(), uuid, Validatecode.TIMEOUT);    // 存入redis
+            redisUtil.putEx("validatecode_" + user.getId(), uuid, Validatecode.TIMEOUT);    // store in redis
             eventProducer.product(new EventModel(EventType.SEND_VALIDATE_EMAIL).setExts("mail", user.getEmail()).setExts("code", uuid));
             return Result.success(user.getId());
         }
@@ -75,13 +75,13 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     public Result sendMail(User user) {
-        if (user.getStat().equals(User.STAT_OK)) {    // 用户已经验证过了
+        if (user.getStat().equals(User.STAT_OK)) {    // user has already been validated
             return Result.fail(MsgCenter.USER_VALIDATED);
         }
         String uuid = UUID.randomUUID().toString();
-        // 将数据存入redis中，固定时间后过期
+        // store data in redis, expires after fixed time
         redisUtil.putEx("validatecode_" + user.getId(), uuid, Validatecode.TIMEOUT);
-        // 将邮件发送事件添加到异步事件队列中去
+        // add email send event to async event queue
         eventProducer.product(new EventModel(EventType.SEND_VALIDATE_EMAIL).setExts("mail", user.getEmail()).setExts("code", uuid));
         return Result.success();
     }
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
             User user = userHolder.getUser();
             user.setStat(User.STAT_OK);
             if (1 == userMapper.update(user)) {
-                redisUtil.delete("validatecode_" + uid);        // 验证成功后删除验证码
+                redisUtil.delete("validatecode_" + uid);        // delete validation code after successful verification
                 return Result.success();
             } else {
                 return Result.fail(MsgCenter.ERROR);
@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
             return Result.fail(MsgCenter.EMPTY_LOGIN);
         }
         User user = userMapper.selectByName(username);
-        // 用户名不存在或者密码错误或者用户已经被删除
+        // username doesn't exist or password is wrong or user has been deleted
         if (user == null || !user.getPassword().equals(PasswordUtil.pwd2Md5(password))
                 || user.getStat().equals(User.STAT_DEL)) {
             return Result.fail(MsgCenter.ERROR_LOGIN);
@@ -121,7 +121,7 @@ public class UserServiceImpl implements UserService {
             token.setToken(uuid);
             token.setIp(ip);
             token.setDevice(device);
-            // 如果保持登陆，过期时间就为7天，否则为1天
+            // if stay logged in, expiration time is 7 days, otherwise 1 day
             if (remember) {
                 token.setExpiredTime(new Date(1000 * 60 * 60 * 24 * 7 + System.currentTimeMillis()));
             } else {
@@ -146,7 +146,7 @@ public class UserServiceImpl implements UserService {
         if (userHolder.getUser() == null) {
             return Result.fail(MsgCenter.USER_NOT_LOGIN);
         }
-        // 验证参数是否合法
+        // validate if parameters are legal
         if (StringUtils.isBlank(user.getNickname())) {
             return Result.fail(MsgCenter.EMPTY_NICKNAME);
         } else if (user.getNickname().length() > 10) {
@@ -154,13 +154,13 @@ public class UserServiceImpl implements UserService {
         } else if (StringUtils.isBlank(user.getEmail())) {
             return Result.fail(MsgCenter.EMPTY_EMAIL);
         } else if (Pattern.compile("^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$").
-                matcher(user.getEmail()).find() == false) {   // 判断邮箱格式是否正确
+                matcher(user.getEmail()).find() == false) {   // check if email format is correct
             return Result.fail(MsgCenter.ERROR_EMAIL);
         } else if (user.getPhone() == null) {
             return Result.fail(MsgCenter.EMPTY_PHONE);
-        } else if (Pattern.compile("1[3|5|7|8|]\\d{9}").matcher(user.getPhone().toString()).find() == false) {  // 验证手机号码是否格式正确
+        } else if (Pattern.compile("1[3|5|7|8|]\\d{9}").matcher(user.getPhone().toString()).find() == false) {  // validate if phone number format is correct
             return Result.fail(MsgCenter.ERROR_PHONE);
-        } else if (userMapper.selectByEmail(user.getEmail()) != null && !userHolder.getUser().getEmail().equals(user.getEmail())) {             // 更改邮箱同时邮箱已被注册
+        } else if (userMapper.selectByEmail(user.getEmail()) != null && !userHolder.getUser().getEmail().equals(user.getEmail())) {             // changing email while email is already registered
             return Result.fail(MsgCenter.EMAIL_REGISTERED);
         }
         user.setId(userHolder.getUser().getId());
@@ -193,7 +193,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isBlank(email)) {
             return Result.fail(MsgCenter.EMPTY_EMAIL);
         } else if (Pattern.compile("^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$").
-                matcher(email).find() == false || (user = userMapper.selectByEmail(email)) == null) {   // 判断邮箱格式以及两次邮箱是否一致
+                matcher(email).find() == false || (user = userMapper.selectByEmail(email)) == null) {   // check email format and if two emails are consistent
             return Result.fail(MsgCenter.ERROR_EMAIL);
         } else if (StringUtils.isBlank(password)) {
             return Result.fail(MsgCenter.EMPTY_PASSWORD);
@@ -205,7 +205,7 @@ public class UserServiceImpl implements UserService {
         if (code != null && code.length() == 36 && code.equals(uuid)) {
             user.setPassword(PasswordUtil.pwd2Md5(password.replaceAll(" ", "")));
             if (1 == userMapper.update(user)) {
-                redisUtil.delete(email);        // 验证成功后删除验证码
+                redisUtil.delete(email);        // delete validation code after successful verification
                 return Result.success(user.getUsername());
             } else {
                 return Result.fail(MsgCenter.ERROR);
@@ -218,7 +218,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isBlank(email)) {
             return Result.fail(MsgCenter.EMPTY_EMAIL);
         } else if (Pattern.compile("^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$").
-                matcher(email).find() == false) {   // 判断邮箱格式是否正确
+                matcher(email).find() == false) {   // check if email format is correct
             return Result.fail(MsgCenter.ERROR_EMAIL);
         }
         User user = userMapper.selectByEmail(email);
@@ -226,7 +226,7 @@ public class UserServiceImpl implements UserService {
             return Result.fail(MsgCenter.EMAIL_NOT_REGISTERED);
         }
         String uuid = UUID.randomUUID().toString();
-        // 将数据存入redis中，固定时间后过期
+        // store data in redis, expires after fixed time
         redisUtil.putEx(email, uuid, Validatecode.TIMEOUT);
         eventProducer.product(new EventModel(EventType.SEND_FIND_PWD_EMAIL).setExts("mail", user.getEmail()).setExts("code", uuid));
         return Result.success();
@@ -235,7 +235,7 @@ public class UserServiceImpl implements UserService {
     public void delNotValidateUser() {
         List<User> users = userMapper.selectByStat(User.STAT_NOT_VALIDATE);
         Date date = new Date();
-        date.setTime(date.getTime() - 1000 * 60 * 60);  // 删除一小时前注册但未验证的用户
+        date.setTime(date.getTime() - 1000 * 60 * 60);  // delete users registered one hour ago but not verified
         for (User user : users) {
             if (user.getCtime().before(date)) {
                 userMapper.deleteById(user.getId());

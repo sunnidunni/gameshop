@@ -6,23 +6,23 @@
     <link href="/css/shoppingcart.css" rel="stylesheet">
     <link href="/css/order.css" rel="stylesheet">
     <script src="/js/order.js"></script>
-    <title>我的订单</title>
+    <title>My Orders</title>
 </head>
 
 <body>
 <%@ include file="common/top.jsp" %>
-<!--左侧导航栏-->
+<!--Left navigation bar-->
 <div class="container">
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-12">
-            <h2 style="color:#FFF"><span class="glyphicon glyphicon-shopping-cart"></span>您的订单</h2>
+            <h2 style="color:#FFF"><span class="glyphicon glyphicon-shopping-cart"></span>Your Orders</h2>
             <div class="row zx">
                 <div id="mainContents">
                     <ul style="font-family: 'Adobe 黑体 Std R';font-weight: bold;font-size: large" id="myTab"
                         class="nav nav-tabs">
-                        <li role="presentation"><a href="#already" data-toggle="tab">已支付</a></li>
-                        <li role="presentation"><a href="#yet" data-toggle="tab">未支付</a></li>
-                        <li role="presentation"><a href="#cancel" data-toggle="tab">已取消</a></li>
+                        <li role="presentation"><a href="#already" data-toggle="tab">Paid</a></li>
+                        <li role="presentation"><a href="#yet" data-toggle="tab">Unpaid</a></li>
+                        <li role="presentation"><a href="#cancel" data-toggle="tab">Cancelled</a></li>
                     </ul>
                     <br>
                     <div id="myTabContent" class="tab-content">

@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * 定时任务
+ * Scheduled tasks
  * http://blog.csdn.net/sd4000784/article/details/7745947
  */
 @Component

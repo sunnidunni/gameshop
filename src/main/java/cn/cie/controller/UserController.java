@@ -35,7 +35,7 @@ public class UserController extends AbstractController {
         if (userHolder.getUser() == null) {
             return Result.fail(MsgCenter.USER_NOT_LOGIN);
         }
-        if (userHolder.getUser().getStat().equals(User.STAT_OK)) {    // 用户已经验证过了
+        if (userHolder.getUser().getStat().equals(User.STAT_OK)) {    // user has already been validated
             return Result.fail(MsgCenter.USER_VALIDATED);
         }
         Result result = userService.validate(userHolder.getUser().getId(), code);
@@ -110,19 +110,19 @@ public class UserController extends AbstractController {
     }
 
     /**
-     * 检查用户是否登陆，如果登陆就返回应该跳转到的页面，否则执行接下来的逻辑
-     * 每次登陆之前都从request的header中获取跳转之前的链接referer
-     * 如果为空（从别的网站跳转过来的），那么应该跳转到首页
-     * 登陆流程中第一次登陆就会调用本方法获取跳转链接，登陆失败将referer写入session中
-     * 如果是从登录页跳转过来的，可能是登陆出错了，但是跳转到登录页之前的referer在session存着，从session中获取
-     * 如果sesson中有referer，那么登陆成功跳转到referer，并且从session中删除referer
+     * Check if user is logged in, return redirect page if logged in, otherwise execute next logic
+     * Before each login, get the referer link from request header
+     * If empty (redirected from another site), should redirect to homepage
+     * First login in the process calls this method to get redirect link, login failure stores referer in session
+     * If redirected from login page, might be login error, but referer before login page is stored in session
+     * If session has referer, login success redirects to referer and removes referer from session
      *
      * @return
      */
     private String getReferer() {
         String referer = null;
         String tmp = this.getRequest().getHeader("Referer");
-        // 如果为空，不是从本站跳转过来的，应该跳转到首页
+        // if empty, not redirected from this site, should redirect to homepage
         if (tmp == null) {
             referer = "/";
         } else if (tmp.endsWith("/login")) {

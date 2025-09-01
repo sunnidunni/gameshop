@@ -50,7 +50,7 @@ public class GameServiceImpl implements GameService {
     }
 
     public Result<List<GameDTO>> getRandomGames() {
-        // 先从缓存中取数据，如果没有再自动生成
+        // first get data from cache, auto-generate if not available
         List<GameDTO> res = redisUtil.lall("everyday", GameDTO.class);
         for (int i = 0; i < res.toArray().length; i++) {
             System.out.println(res.get(i).toString());
@@ -62,7 +62,7 @@ public class GameServiceImpl implements GameService {
             Set<Integer> numSet = new HashSet<Integer>();
             Random random = new Random();
             List<Game> games = new ArrayList<Game>();
-            // 如果游戏数量大于5个就随机取5个，否则取全部的
+            // if game count is greater than 5, randomly select 5, otherwise take all
             if (count > 5) {
                 while (numSet.size() < 5) {
                     numSet.add(random.nextInt(count));
@@ -76,12 +76,12 @@ public class GameServiceImpl implements GameService {
             }
             res = paresGameDTO(games);
             System.out.println("res:"+res.toArray().toString());
-            // 将数据存入缓存中
+            // store data in cache
             int tmp = 1000 * 3600 * 24;
-            long zero = (System.currentTimeMillis() / tmp * tmp + tmp - TimeZone.getDefault().getRawOffset()) / 1000;    //明天零点零分零秒的unix时间戳
+            long zero = (System.currentTimeMillis() / tmp * tmp + tmp - TimeZone.getDefault().getRawOffset()) / 1000;    // unix timestamp for tomorrow at 00:00:00
             redisUtil.rpushObjectExAtTime(RedisUtil.EVERYDAY, GameDTO.class, zero, res.toArray());
             System.out.println(redisUtil.lall("everyday", GameDTO.class).size());
-            System.out.println("数据进入缓存");
+            System.out.println("Data entered cache");
         }
         return Result.success(res);
     }
@@ -146,7 +146,7 @@ public class GameServiceImpl implements GameService {
     private List<GameDTO> paresGameDTO(List<Game> games) {
         List<GameDTO> gameDTOS = new ArrayList<GameDTO>();
         for (Game game : games) {
-            List<String> img = imgMapper.selectByGame(game.getId());                // 获取所有的图片
+            List<String> img = imgMapper.selectByGame(game.getId());                // get all images
             GameDTO dto = new GameDTO(game, null, img);
             gameDTOS.add(dto);
         }

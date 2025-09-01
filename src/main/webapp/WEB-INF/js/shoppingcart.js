@@ -13,7 +13,7 @@ $(
                 var tr = document.createElement("tr");
                 tr.className = "cart_item";
                 tr.id = "game_" + j;
-                tr.innerHTML = "<td>" + k + "</td><td>" + gname + "</td><td id='price_" + j + "'>￥" + price + "</td><td onclick='del(" + j + ")'>移除</td>";
+                tr.innerHTML = "<td>" + k + "</td><td>" + gname + "</td><td id='price_" + j + "'>￥" + price + "</td><td onclick='del(" + j + ")'>Remove</td>";
                 spcar.appendChild(tr);
                 k++;
                 document.getElementById("prices").innerText = prices;

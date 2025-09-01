@@ -21,7 +21,7 @@ $(
             div.innerHTML = "";
             while (result.data[i]) {
                 if (result.data[i].price == '0') {
-                    result.data[i].price = "免费"
+                    result.data[i].price = "Free"
                 } else {
                     result.data[i].price = "¥" + result.data[i].price;
                 }
@@ -32,9 +32,9 @@ $(
                     "</a>" +
                     "</div>" +
                     "<div class='col-md-6 cancelpadding'>" +
-                    "<div class='smargin'>游戏名：" + result.data[i].name + "</div>" +
-                    "<div class='smargin_1'>价格：" + result.data[i].price + "</div>" +
-                    "<div class='smargin_2'>制造商：" + result.data[i].creater + "</div>" +
+                    "<div class='smargin'>Game:" + result.data[i].name + "</div>" +
+                    "<div class='smargin_1'>Price:" + result.data[i].price + "</div>" +
+                    "<div class='smargin_2'>Developer:" + result.data[i].creater + "</div>" +
                     "</div>" +
                     "</div>";
                 myTabContent.appendChild(div);
@@ -61,7 +61,7 @@ $(
             div.innerHTML = "";
             while (result.data[i]) {
                 if (result.data[i].price == '0') {
-                    result.data[i].price = "免费"
+                    result.data[i].price = "Free"
                 } else {
                     result.data[i].price = "¥" + result.data[i].price;
                 }
@@ -72,9 +72,9 @@ $(
                     "</a>" +
                     "</div>" +
                     "<div class='col-md-6 cancelpadding'>" +
-                    "<div class='smargin'>游戏名：" + result.data[i].name + "</div>" +
-                    "<div class='smargin_1'>价格：" + result.data[i].price + "</div>" +
-                    "<div class='smargin_2'>制造商：" + result.data[i].creater + "</div>" +
+                    "<div class='smargin'>Game:" + result.data[i].name + "</div>" +
+                    "<div class='smargin_1'>Price:" + result.data[i].price + "</div>" +
+                    "<div class='smargin_2'>Developer:" + result.data[i].creater + "</div>" +
                     "</div>" +
                     "</div>";
                 myTabContent.appendChild(div);

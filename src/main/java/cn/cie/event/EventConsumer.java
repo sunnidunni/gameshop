@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * 事件消费者，不断从事件队列中获取事件，根据事件类型处理不同的事件
+ * Event consumer that continuously gets events from event queue and handles different events based on event type
  */
 @Service
 public class EventConsumer implements InitializingBean, ApplicationContextAware, DisposableBean {
@@ -35,16 +35,16 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware,
     private ThreadPoolExecutor threadPool;
 
     /**
-     * 事件类型以及执行这些事件的handler
+     * Event types and handlers that execute these events
      */
     private Map<EventType, List<EventHandler>> handlers = new HashMap<EventType, List<EventHandler>>();
 
     public void afterPropertiesSet() throws Exception {
-        // 从上下文中获取所有的handler
+        // get all handlers from context
         Map<String, EventHandler> beans = applicationContext.getBeansOfType(EventHandler.class);
         if (beans != null) {
             for (Map.Entry<String, EventHandler> entry : beans.entrySet()) {
-                // 遍历所有的 hander ，将 event-handler 的映射加入 handlers 中
+                // iterate through all handlers, add event-handler mapping to handlers
                 List<EventType> types = entry.getValue().getSupportEvent();
                 for (EventType type : types) {
                     if (!handlers.containsKey(type)) {
@@ -67,7 +67,7 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware,
             // 遍历所有的 hander ，将 event-handler 的映射加入 handlers 中
 
         }
-        // 设置线程池的大小为 CPU 的核数 * 2
+        // set thread pool size to CPU cores * 2
         threadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 2);
         new Thread(new Runnable() {
             public void run() {
@@ -111,7 +111,7 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware,
     public void destroy() throws Exception {
         if (threadPool != null) {
             while (threadPool.getQueue().size() != 0 || threadPool.getActiveCount() != 0) {
-                // 等待所有任务执行完毕
+                // wait for all tasks to complete
             }
             threadPool.shutdownNow();
         }

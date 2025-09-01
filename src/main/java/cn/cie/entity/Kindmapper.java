@@ -1,7 +1,7 @@
 package cn.cie.entity;
 
 /**
- * 游戏和种类映射
+ * Game and category mapping
  */
 public class Kindmapper {
     private Integer game;

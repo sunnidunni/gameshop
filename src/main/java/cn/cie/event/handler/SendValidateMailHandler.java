@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 发送注册用户时邮箱验证码事件
+ * Event for sending email verification code during user registration
  */
 @Service
 public class SendValidateMailHandler implements EventHandler {

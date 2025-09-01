@@ -93,7 +93,7 @@ ul {
 
 #carousel_3 {
     width: 500px;
-    height: 75px; /* 定义显示窗口的大小 */
+    height: 75px; /* Define the size of the display window */
     border: 1px solid #000;
     overflow: hidden;
 }
@@ -102,21 +102,21 @@ ul {
     width: 1000px;
 }
 
-/* 定义全部图片的宽度和 */
+/* Define the total width of all images */
 #carousel_3 li {
     width: 126px;
     height: 65px;
     float: left;
 }
 
-/* 单张图片的所在位置的大小，宽度就是图片宽度加左右边距 */
+/* Size of each image position, width equals image width plus left and right margins */
 #carousel_3 img {
     width: 116px;
     height: 65px;
     margin: 5px;
 }
 
-/* 单张图片的尺寸，及外边距 */
+/* Size of individual image and its margins */
 
 .btn_1 {
     background-color: #316282;

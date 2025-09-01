@@ -4,37 +4,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 事件实体
+ * Event entity
  */
 public class EventModel {
 
     /**
-     * 在缓存中事件队列的key
+     * Key for event queue in cache
      */
     public static final String EVENT_KEY = "event";
 
     /**
-     * 事件类型
+     * Event type
      */
     private EventType eventType;
     /**
-     * 事件发出者id
+     * Event sender id
      */
     private int fromId;
     /**
-     * 事件接受者id
+     * Event receiver id
      */
     private int toId;
     /**
-     * 触发事件的实体，比如评论点赞
+     * Entity that triggered the event, e.g., comment like
      */
     private int entityId;
     /**
-     * 实体拥有者
+     * Entity owner
      */
     private int entityOwnerId;
     /**
-     * 可能会有的额外信息
+     * Possible additional information
      */
     private Map<String ,String> exts = new HashMap<String, String>();
 

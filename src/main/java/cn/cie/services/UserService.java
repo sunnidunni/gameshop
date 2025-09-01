@@ -7,21 +7,21 @@ import cn.cie.utils.Result;
 public interface UserService {
 
     /**
-     * 注册
+     * Register
      * @param user
      * @return
      */
     Result register(User user);
 
     /**
-     * 给用户注册的邮箱发送验证码
+     * Send verification code to user's registered email
      * @param user
      * @return
      */
     Result sendMail(User user);
 
     /**
-     * 邮箱验证
+     * Email verification
      * @param uid
      * @param code
      * @return
@@ -29,39 +29,39 @@ public interface UserService {
     Result validate(Integer uid, String code);
 
     /**
-     * 登录
-     * 登陆时如果选择了“记住我”选项，那么token保持7天，否则保存1天
-     * 登陆成功，将token存在数据库中记录，同时存入缓存，过期时间为1天
-     * 每次请求时拦截器先从缓存中查找，如果没有再去数据库中查找
-     * @param username  用户名
-     * @param password  密码
-     * @param remember  是否保持登陆（token生存周期为7天）
+     * Login
+     * If "Remember me" is selected during login, token persists for 7 days, otherwise 1 day
+     * On successful login, token is stored in database and cache with 1-day expiration
+     * For each request, interceptor checks cache first, then database if not found
+     * @param username  username
+     * @param password  password
+     * @param remember  whether to stay logged in (token lifecycle is 7 days)
      * @return
      */
     Result login(String username, String password, boolean remember, String ip, String device);
 
     /**
-     * 登出
+     * Logout
      * @return
      */
     Result logout(String token);
 
     /**
-     * 更新用户信息
+     * Update user information
      * @param user
      * @return
      */
     Result updateUserInfo(User user);
 
     /**
-     * 更新密码
+     * Update password
      * @param password
      * @return
      */
     Result updatePassword(String password);
 
     /**
-     * 忘记密码
+     * Forgot password
      * @param password
      * @param code
      * @return
@@ -69,19 +69,19 @@ public interface UserService {
     Result forgetPassword(String password, String email, String code);
 
     /**
-     * 忘记密码时需要给邮箱发送验证码
+     * Send verification code to email for password recovery
      * @param email
      * @return
      */
     Result sendFetchPwdMail(String email);
 
     /**
-     * 删除没有验证的用户
+     * Delete users who haven't verified
      */
     void delNotValidateUser();
 
     /**
-     * 删除已经过期的token
+     * Delete expired tokens
      */
     void expireToken();
 }

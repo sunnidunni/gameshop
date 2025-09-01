@@ -3,7 +3,7 @@ package cn.cie.entity;
 import java.util.Date;
 
 /**
- * 订单详情
+ * Order details
  */
 public class Orderitem {
     private Integer id;

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 事件生产者
+ * Event producer
  */
 @Component
 public class EventProducer {

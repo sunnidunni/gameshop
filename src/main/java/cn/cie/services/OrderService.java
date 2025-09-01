@@ -8,7 +8,7 @@ import java.util.List;
 public interface OrderService {
 
     /**
-     * 创建新订单
+     * Create new order
      * @param uid
      * @param gids
      * @return
@@ -16,14 +16,14 @@ public interface OrderService {
     Result addOrders(int uid, List<Integer> gids);
 
     /**
-     * 取消订单
+     * Cancel order
      * @param orderid
      * @return
      */
     Result cancelOrder(int uid, int orderid);
 
     /**
-     * 支付订单
+     * Pay order
      * @param uid
      * @param orderid
      * @return

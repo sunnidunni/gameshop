@@ -5,19 +5,19 @@ import java.util.Date;
 public class User {
 
     /**
-     * 未验证，需要邮箱验证
+     * Not validated, requires email verification
      */
     public static final Byte STAT_NOT_VALIDATE = 0;
     /**
-     * 正常
+     * Normal
      */
     public static final Byte STAT_OK = 1;
     /**
-     * 受限
+     * Restricted
      */
     public static final Byte STAT_RESTRICT = 2;
     /**
-     * 已删除
+     * Deleted
      */
     public static final Byte STAT_DEL = 3;
 

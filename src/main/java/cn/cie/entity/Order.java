@@ -3,20 +3,20 @@ package cn.cie.entity;
 import java.util.Date;
 
 /**
- * 订单
+ * Order
  */
 public class Order {
 
     /**
-     * 未支付
+     * Not paid
      */
     public static final Byte STAT_NOT_PAY = 0;
     /**
-     * 已支付
+     * Paid
      */
     public static final Byte STAT_PAY = 1;
     /**
-     * 取消
+     * Cancelled
      */
     public static final Byte STAT_CANCEL = 2;
 

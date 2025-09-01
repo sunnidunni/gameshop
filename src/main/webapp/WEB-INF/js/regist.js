@@ -34,11 +34,11 @@ function regist() {
 function time() {
     if (wait == 0) {
         document.getElementById("send").removeAttribute("disabled");
-        document.getElementById("send").value = "重新获取验证码";
+        document.getElementById("send").value = "Resend Verification Code";
         wait = 60;
     } else {
         document.getElementById("send").setAttribute("disabled", true);
-        document.getElementById("send").value = wait + "s后可以重新发送";
+        document.getElementById("send").value = wait + "s before resend";
         wait--;
         schedule();
     }

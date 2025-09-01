@@ -26,7 +26,7 @@ public class AdminController extends AbstractController {
 
     @GetMapping(value = "login")
     public String login() {
-        System.out.println("进入登录");
+        System.out.println("Entering login");
         return "adminlogin";
     }
 

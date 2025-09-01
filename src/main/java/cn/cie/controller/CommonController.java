@@ -36,7 +36,7 @@ public class CommonController extends AbstractController {
     @GetMapping(value = "login")
     public String login() {
         String referer = getReferer();
-        // 如果用户已经登陆并且状态正常，那么跳转到之前的页面
+        // if user is already logged in and status is normal, redirect to previous page
         if (userHolder.getUser() != null && userHolder.getUser().getStat().equals(User.STAT_OK)) {
             return "redirect:" + referer;
         }
@@ -49,7 +49,7 @@ public class CommonController extends AbstractController {
                         @RequestParam(value = "remember", defaultValue = "false", required = false) boolean remember,
                         HttpServletResponse response) {
         String referer = getReferer();
-        // 如果用户已经登陆，那么跳转到之前的页面
+        // if user is already logged in, redirect to previous page
         if (userHolder.getUser() != null && userHolder.getUser().getStat().equals(User.STAT_OK)) {
             return Result.fail(MsgCenter.OK, referer);
         }
@@ -57,7 +57,7 @@ public class CommonController extends AbstractController {
         if (result.isSuccess()) {
             Map<String, String> data = new HashMap<String, String>();
             data.put("referer", referer);
-            // response中添加cookie，以后每次请求都会带上cookie
+            // add cookie to response, all future requests will include the cookie
             Cookie cookie = new Cookie("token", (String) result.getData());
             cookie.setPath("/");
             if (remember) {
@@ -76,7 +76,7 @@ public class CommonController extends AbstractController {
     @ResponseBody
     public Result logout() {
         String token = null;
-        // 从请求中获取token
+        // get token from request
         if (this.getRequest().getCookies() != null) {
             for (Cookie cookie : this.getRequest().getCookies()) {
                 if (cookie.getName().equals("token")) {
@@ -101,7 +101,7 @@ public class CommonController extends AbstractController {
     public Result register(User user, HttpServletResponse response) {
         Result result = userService.register(user);
         String pwd = user.getPassword();
-        // 注册成功就自动登录，前台跳转到验证页面
+        // auto login after successful registration, frontend redirects to validation page
         if (result.isSuccess()) {
             login(user.getUsername(), pwd, false, response);
             return Result.success();
@@ -110,7 +110,7 @@ public class CommonController extends AbstractController {
     }
 
     /**
-     * 获取每日推荐，随机选取5个游戏，每日生成一次
+     * Get daily recommendations, randomly select 5 games, generated once daily
      *
      * @return
      */
@@ -127,7 +127,7 @@ public class CommonController extends AbstractController {
     }
 
     /**
-     * 最新的5个游戏，根据上架时间排序，放在缓存中
+     * Latest 5 games, sorted by release time, stored in cache
      *
      * @return
      */
@@ -138,7 +138,7 @@ public class CommonController extends AbstractController {
     }
 
     /**
-     * 最新的5个未上架游戏，根据时间排序，放在缓存中
+     * Latest 5 unreleased games, sorted by time, stored in cache
      *
      * @return
      */
@@ -166,19 +166,19 @@ public class CommonController extends AbstractController {
     }
 
     /**
-     * 检查用户是否登陆，如果登陆就返回应该跳转到的页面，否则执行接下来的逻辑
-     * 每次登陆之前都从request的header中获取跳转之前的链接referer
-     * 如果为空（从别的网站跳转过来的），那么应该跳转到首页
-     * 登陆流程中第一次登陆就会调用本方法获取跳转链接，登陆失败将referer写入session中
-     * 如果是从登录页跳转过来的，可能是登陆出错了，但是跳转到登录页之前的referer在session存着，从session中获取
-     * 如果sesson中有referer，那么登陆成功跳转到referer，并且从session中删除referer
+     * Check if user is logged in, return redirect page if logged in, otherwise execute next logic
+     * Before each login, get the referer link from request header
+     * If empty (redirected from another site), should redirect to homepage
+     * First login in the process calls this method to get redirect link, login failure stores referer in session
+     * If redirected from login page, might be login error, but referer before login page is stored in session
+     * If session has referer, login success redirects to referer and removes referer from session
      *
      * @return
      */
     private String getReferer() {
         String referer = null;
         String tmp = this.getRequest().getHeader("Referer");
-        // 如果为空，不是从本站跳转过来的，应该跳转到首页
+        // if empty, not redirected from this site, should redirect to homepage
         if (tmp == null) {
             referer = "/";
         } else if (tmp.endsWith("/login")) {

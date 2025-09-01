@@ -14,7 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 日志记录，包括请求日志和错误日志
+ * Log recording for requests and errors
  */
 @Component
 @Aspect
@@ -23,7 +23,7 @@ public class LogAspectj {
     private final Logger logger = Logger.getLogger(this.getClass());
 
     @Before("execution(* cn.cie.controller.*Controller.*(..)) && !execution( * cn.cie.controller.AbstractController.*(..))")
-    // 切面为controller中的所有方法
+    // Aspect for all controller methods
     public void logAccess(JoinPoint joinPoint) {
         PropertyConfigurator.configure(this.getClass().getClassLoader().getResource("/").getPath() + "log4j-acc.properties");
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -51,7 +51,7 @@ public class LogAspectj {
     }
 
     @AfterThrowing(value = "execution(* cn.cie.controller.*Controller.*(..)) && !execution( * cn.cie.controller.AbstractController.*(..))", throwing = "e")
-    // 切面为controller中的所有方法
+    // Aspect for all controller methods
     public void errorAccess(Throwable e) {
         PropertyConfigurator.configure(this.getClass().getClassLoader().getResource("/").getPath() + "log4j-error.properties");
         if (e instanceof Exception) {

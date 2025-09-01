@@ -3,20 +3,20 @@ package cn.cie.entity;
 import java.util.Date;
 
 /**
- * 游戏
+ * Game
  */
 public class Game {
 
     /**
-     * 未上架
+     * Not released
      */
     public static final Byte STAT_PRE = 0;
     /**
-     * 已上架
+     * Released
      */
     public static final Byte STAT_OK = 1;
     /**
-     * 已下架
+     * Removed from sale
      */
     public static final Byte STAT_DEL = 2;
 

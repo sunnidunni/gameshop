@@ -1,16 +1,16 @@
 package cn.cie.entity;
 
 /**
- * 游戏激活码
+ * Game activation code
  */
 public class Code {
 
     /**
-     * 未使用
+     * Not used
      */
     public static final Byte STAT_NOT_USED = 0;
     /**
-     * 已使用
+     * Used
      */
     public static final Byte STAT_USED = 1;
 
