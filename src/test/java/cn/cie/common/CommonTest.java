@@ -13,9 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.Timestamp;
 import java.util.*;
 
-/**
- * Created by lh2 on 2023/6/10.
- */
+
 public class CommonTest {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
